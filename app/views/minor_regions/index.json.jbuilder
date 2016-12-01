@@ -1,0 +1,1 @@
+json.array! @minor_regions, partial: 'minor_regions/minor_region', as: :minor_region

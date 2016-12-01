@@ -1,0 +1,17 @@
+<%= form_for(@major_region) do |f| %>
+  <% if @major_region.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@major_region.errors.count, "error") %> prohibited this major_region from being saved:</h2>
+
+      <ul>
+      <% @major_region.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

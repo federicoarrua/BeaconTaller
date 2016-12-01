@@ -11,10 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025195529) do
+ActiveRecord::Schema.define(version: 20161108205133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beacons", force: :cascade do |t|
+    t.integer  "major_id",    null: false
+    t.integer  "minor_id",    null: false
+    t.integer  "user_id"
+    t.text     "description"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "beacons", ["major_id", "minor_id"], name: "index_beacons_on_major_id_and_minor_id", unique: true, using: :btree
+
+  create_table "devices", id: false, force: :cascade do |t|
+    t.integer  "device_id",  null: false
+    t.string   "mail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "devices", ["device_id"], name: "index_devices_on_device_id", unique: true, using: :btree
+
+  create_table "discovers", force: :cascade do |t|
+    t.integer  "device_id",     null: false
+    t.integer  "beacon_id",     null: false
+    t.datetime "discover_time"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "major_regions", id: false, force: :cascade do |t|
+    t.integer  "major_id",    null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "major_regions", ["major_id"], name: "index_major_regions_on_major_id", unique: true, using: :btree
+
+  create_table "minor_regions", id: false, force: :cascade do |t|
+    t.integer  "minor_id",    null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "minor_regions", ["minor_id"], name: "index_minor_regions_on_minor_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

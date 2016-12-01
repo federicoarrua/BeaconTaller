@@ -1,0 +1,2 @@
+module MajorRegionsHelper
+end

@@ -1,0 +1,1 @@
+json.array! @major_regions, partial: 'major_regions/major_region', as: :major_region

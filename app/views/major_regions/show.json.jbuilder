@@ -1,0 +1,1 @@
+json.partial! "major_regions/major_region", major_region: @major_region
