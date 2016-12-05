@@ -2,6 +2,7 @@
 	<% if current_user %>
 	 	<%= link_to "Beacons List", beacons_path,class:'list-group-item' %>
 		<%= link_to "Add new Beacon", new_beacon_path,class:'list-group-item' %>
-		<%= link_to "Regions", new_minor_region_path,class:'list-group-item' %>
+		<%= link_to "Major Regions", major_regions_path,class:'list-group-item' %>
+		<%= link_to "Minor Regions", minor_regions_path,class:'list-group-item'%>
 	<% end %>
 </div>

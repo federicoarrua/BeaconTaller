@@ -11,7 +11,19 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="panel-body">
+
+    <%= f.label :major_id %>
+    <%= f.collection_select :major_id, MajorRegion.all, :major_id, :major_id%>
+
+    <%= f.label :minor_id %>
+    <%= f.collection_select :minor_id, MinorRegion.all, :minor_id, :minor_id%>
+
+    <br></br>
+
+    <%= f.label :description %>
+        <%= f.text_area :description, autofocus: true, class:'form-control input-medium', rows:3 %>
+
+    <%= f.submit "Submit", class:'btn btn-primary'%>
   </div>
 <% end %>

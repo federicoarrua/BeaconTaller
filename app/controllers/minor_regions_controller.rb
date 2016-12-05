@@ -69,6 +69,6 @@ class MinorRegionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def minor_region_params
-      params.fetch(:minor_region, {})
+      params.require(:minor_region).permit(:minor_id, :description)
     end
 end

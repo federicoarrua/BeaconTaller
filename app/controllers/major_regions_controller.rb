@@ -69,6 +69,6 @@ class MajorRegionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def major_region_params
-      params.fetch(:major_region, {})
+      params.require(:major_region).permit(:major_id, :description)
     end
 end
