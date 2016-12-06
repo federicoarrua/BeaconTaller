@@ -3,4 +3,11 @@ class Beacon < ActiveRecord::Base
   belongs_to :user , :foreign_key=>[:user_id]
   belongs_to :major_region, :foreign_key=>[:major_id]
   belongs_to :minor_region, :foreign_key=>[:minor_id]
+
+  validates :description,
+  	presence: true,
+  	length: {minimum: 10 ,maximum:256}
+
+  validates :major_region, presence: true
+  validates :minor_region, presence: true
 end

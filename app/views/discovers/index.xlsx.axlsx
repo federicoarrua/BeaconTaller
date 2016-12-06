@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Discovers") do |sheet|
+	sheet.add_row ["ID","Device_id","Beacon ID","Major Region","Minor Region","Discover Time","Created_at","Updated_at"]
+	@discovers.each do |discover|
+		sheet.add_row [discover.id, discover.device_id, discover.beacon_id,discover.major_id,discover.minor_id,discover.discover_time,discover.created_at,discover.updated_at]
+	end	
+end

@@ -4,7 +4,12 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    @devices = Device.all.order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.json
+    end
   end
 
   # GET /devices/1

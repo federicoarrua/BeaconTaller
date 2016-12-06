@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'report/index'
+
   get 'home/index'
 
   devise_for :users
@@ -18,6 +20,9 @@ Rails.application.routes.draw do
      resources :beacons
      resources :major_regions
      resources :minor_regions
+     resources :devices
+     resources :discovers
+
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 20161203192058) do
   create_table "discovers", force: :cascade do |t|
     t.integer  "device_id",     null: false
     t.integer  "beacon_id",     null: false
-    t.datetime "discover_time"
+    t.integer  "major_id",      null: false
+    t.integer  "minor_id",      null: false
+    t.string   "discover_time"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

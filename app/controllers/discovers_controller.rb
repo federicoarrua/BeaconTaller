@@ -4,7 +4,12 @@ class DiscoversController < ApplicationController
   # GET /discovers
   # GET /discovers.json
   def index
-    @discovers = Discover.all
+    @discovers = Discover.all.order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.xlsx
+      format.json
+    end
   end
 
   # GET /discovers/1
