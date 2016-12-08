@@ -30,8 +30,7 @@ ActiveRecord::Schema.define(version: 20161203192058) do
   add_index "beacons", ["major_id", "minor_id"], name: "index_beacons_on_major_id_and_minor_id", unique: true, using: :btree
 
   create_table "devices", id: false, force: :cascade do |t|
-    t.integer  "device_id",  null: false
-    t.string   "mail"
+    t.string   "device_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

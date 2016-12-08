@@ -1,8 +1,7 @@
 class CreateDevices < ActiveRecord::Migration
   def change
     create_table :devices,:id=>false do |t|
-      t.integer :device_id, :null=>false
-      t.string :mail
+      t.string :device_id, :null=>false
 
       t.timestamps null: false
     end

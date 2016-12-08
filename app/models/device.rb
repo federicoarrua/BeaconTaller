@@ -5,8 +5,5 @@ class Device < ActiveRecord::Base
   validates :device_id,
   	presence: true,
 	uniqueness: true
-
-  validates :mail,
-  	presence: true,
-	uniqueness: true
+	
 end
