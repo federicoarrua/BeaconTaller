@@ -74,6 +74,6 @@ class DiscoversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discover_params
-      params.fetch(:discover, {})
+      params.require(:discover).perrmit(:device_id,:beacon_id,:major_id,:minor_id,:discover_time)
     end
 end
