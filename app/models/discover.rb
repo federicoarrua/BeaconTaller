@@ -5,7 +5,6 @@ class Discover < ActiveRecord::Base
   belongs_to :major_region, :foreign_key=>[:major_id]
 
   validates :device,	presence: true
-  validates :beacon,	presence: true
   validates :minor_region,	presence: true
   validates :major_region,	presence: true
 

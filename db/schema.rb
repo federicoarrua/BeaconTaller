@@ -38,8 +38,7 @@ ActiveRecord::Schema.define(version: 20161203192058) do
   add_index "devices", ["device_id"], name: "index_devices_on_device_id", unique: true, using: :btree
 
   create_table "discovers", force: :cascade do |t|
-    t.integer  "device_id",     null: false
-    t.integer  "beacon_id",     null: false
+    t.string   "device_id",     null: false
     t.integer  "major_id",      null: false
     t.integer  "minor_id",      null: false
     t.string   "discover_time"
