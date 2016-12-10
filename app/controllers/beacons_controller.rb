@@ -12,6 +12,12 @@ class BeaconsController < ApplicationController
   def show
   end
 
+  #GET /beacons/showregion
+  #GET /beacons/showregion.json
+  def showregion
+      @beacon = Beacon.where(major_id:params[:major_id],minor_id:params[:minor_id]).first
+  end
+
   # GET /beacons/new
   def new
     @beacon = Beacon.new

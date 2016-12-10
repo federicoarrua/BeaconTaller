@@ -1,0 +1,22 @@
+<div class="col-md-8 col-sm-8">
+	<p id="notice"><%= notice %></p>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2>Showing beacon <%= @beacon.id%></h2>
+		</div>
+		<div class="panel-body">
+			<h4>Beacon Description</h4>
+			<p><%= @beacon.description %></p>
+			<div class="col-md-6">
+				<h5>Major Region <%= @beacon.major_id %> description</h5>
+				<p><%= MajorRegion.find(@beacon.major_id).description %></p>
+			</div>
+			<div class="col-md-6">
+				<h5>Minor Region <%= @beacon.minor_id %> description</h5>
+				<p><%= MinorRegion.find(@beacon.minor_id).description %></p>
+			</div>
+		</div>
+	</div>
+	<%= link_to 'Edit', edit_beacon_path(@beacon) , class:'btn btn-primary'%> |
+	<%= link_to 'Back', beacons_path , class:'btn btn-warning'%>
+</div>
