@@ -1,5 +1,6 @@
 class DiscoversController < ApplicationController
   before_action :set_discover, only: [:show, :edit, :update, :destroy]
+  before_filter :verify_user, only: [:show,:edit,:update,:destroy,:index,:show]
 
   # GET /discovers
   # GET /discovers.json
@@ -75,5 +76,9 @@ class DiscoversController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def discover_params
       params.require(:discover).permit(:device_id,:beacon_id,:major_id,:minor_id,:discover_time)
+    end
+
+    def verify_user 
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)
     end
 end

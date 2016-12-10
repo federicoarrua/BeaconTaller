@@ -1,6 +1,6 @@
 class MajorRegionsController < ApplicationController
   before_action :set_major_region, only: [:show, :edit, :update, :destroy]
-
+  before_filter :verify_user
   # GET /major_regions
   # GET /major_regions.json
   def index
@@ -70,5 +70,9 @@ class MajorRegionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def major_region_params
       params.require(:major_region).permit(:major_id, :description)
+    end
+
+    def verify_user 
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)
     end
 end

@@ -1,5 +1,6 @@
 class MinorRegionsController < ApplicationController
   before_action :set_minor_region, only: [:show, :edit, :update, :destroy]
+  before_filter :verify_user
 
   # GET /minor_regions
   # GET /minor_regions.json
@@ -70,5 +71,9 @@ class MinorRegionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def minor_region_params
       params.require(:minor_region).permit(:minor_id, :description)
+    end
+
+    def verify_user 
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)
     end
 end

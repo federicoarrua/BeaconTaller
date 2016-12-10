@@ -1,5 +1,6 @@
 class BeaconsController < ApplicationController
   before_action :set_beacon, only: [:show, :edit, :update, :destroy]
+  before_filter :verify_user, only: [:new,:edit,:create,:update,:destroy]
 
   # GET /beacons
   # GET /beacons.json
@@ -76,5 +77,9 @@ class BeaconsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def beacon_params
       params.require(:beacon).permit(:major_id,:minor_id,:description)
+    end
+
+    def verify_user 
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)
     end
 end

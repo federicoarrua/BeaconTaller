@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-MajorRegion.create(major_id:1,description:"Esta región es usada para referenciar a todos los beacons del primer piso")
-MinorRegion.create(minor_id:1,description:"Esta región es usada para referenciar a todos los beacons del primer aula de cada piso")
+MajorRegion.create(major_id:4660,description:"Esta región es usada para referenciar a todos los beacons del primer piso")
+MinorRegion.create(minor_id:64001,description:"Esta región es usada para referenciar a todos los beacons del primer aula de cada piso")
 Beacon.create(major_id:1,minor_id:1,description:"Encontraste el beacon con major y minor 1,1 Felicidades!!")
 
 Device.create(device_id:"example@mail.com")

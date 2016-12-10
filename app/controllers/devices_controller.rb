@@ -1,5 +1,6 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_filter :verify_user, only: [:show,:edit,:update,:destroy,:index,:show]
 
   # GET /devices
   # GET /devices.json
@@ -75,5 +76,9 @@ class DevicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
       params.require(:device).permit(:device_id)
+    end
+
+    def verify_user 
+      (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)
     end
 end
