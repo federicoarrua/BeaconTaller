@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Devices") do |sheet|
-	sheet.add_row ["ID",Created_at","Updated_at"]
+	sheet.add_row ["ID","Created_at","Updated_at"]
 	@devices.each do |device|
 		sheet.add_row [device.device_id, device.created_at, device.updated_at]
 	end	
