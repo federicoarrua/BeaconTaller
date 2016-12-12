@@ -14,6 +14,9 @@ gem 'axlsx_rails'
 
 gem 'rsense'
 
+#Bootstrap gems
+gem 'bootstrap-sass', '~> 3.3.6'
+
 gem 'jquery-datatables-rails', '~> 3.4.0'
 
 gem 'composite_primary_keys'
