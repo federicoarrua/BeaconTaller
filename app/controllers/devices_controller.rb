@@ -5,11 +5,20 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all.order('created_at DESC')
-    respond_to do |format|
-      format.html
-      format.xlsx
-      format.json
+    start_date = params[:index][:start_date].to_date.beginning_of_day
+    end_date = params[:index][:end_date].to_date.end_of_day
+    
+    if start_date > end_date
+      flash[:date_device] = "La fecha inicial debe ser menor a la final"
+      redirect_to report_index_url
+    else  
+      @devices = Device.where(:created_at => start_date..end_date)
+      
+      respond_to do |format|
+        format.html
+        format.xlsx
+        format.json
+      end
     end
   end
 

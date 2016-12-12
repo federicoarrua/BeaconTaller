@@ -10,6 +10,8 @@ gem 'devise'
 
 gem 'hirb'
 
+gem 'bootstrap-datepicker-rails'
+
 gem 'axlsx_rails'
 
 gem 'rsense'

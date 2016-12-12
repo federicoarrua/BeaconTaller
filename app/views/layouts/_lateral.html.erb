@@ -1,9 +1,9 @@
 <div class="col-md-2 col-xs-3 list-group">
 	<% if current_user %>
-	 	<%= link_to "Beacons List", beacons_path,class:'list-group-item' %>
-		<%= link_to "Add new Beacon", new_beacon_path,class:'list-group-item' %>
+	 	<%= link_to "Lista de Beacons", beacons_path,class:'list-group-item' %>
+		<%= link_to "Añadir Beacon", new_beacon_path,class:'list-group-item' %>
 		<%= link_to "Major Regions", major_regions_path,class:'list-group-item' %>
 		<%= link_to "Minor Regions", minor_regions_path,class:'list-group-item'%>
-		<%= link_to "Reports", '/report/index',class:'list-group-item'%>
+		<%= link_to "Reportes", '/report/index',class:'list-group-item'%>
 	<% end %>
 </div>

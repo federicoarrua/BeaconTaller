@@ -1,7 +1,7 @@
 <div class="col-md-8 col-sm-8">
   <p id="notice"><%= notice %></p>
 
-  <h1>Listing Major Regions</h1>
+  <h1>Lista de Major Regions</h1>
 
   <table id="datatable" class="table datatable table-condensed">
     <thead>
@@ -16,9 +16,9 @@
       <% @major_regions.each do |major_region| %>
         <tr>
           <td><%= major_region.major_id%></td>
-          <td><%= link_to 'Show', major_region ,class:'btn btn-default'%></td>
-          <td><%= link_to 'Edit', edit_major_region_path(major_region), class:'btn btn-primary'%></td>
-          <td><%= link_to 'Destroy', major_region, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+          <td><%= link_to 'Ver', major_region ,class:'btn btn-default'%></td>
+          <td><%= link_to 'Editar', edit_major_region_path(major_region), class:'btn btn-primary'%></td>
+          <td><%= link_to 'Eliminar', major_region, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>
@@ -26,5 +26,5 @@
 
   <br>
 
-  <%= link_to 'New Major region', new_major_region_path, class: 'btn btn-primary' %>
+  <%= link_to 'Nueva Major region', new_major_region_path, class: 'btn btn-primary' %>
 </div>

@@ -1,8 +1,6 @@
 <%= form_for(@minor_region) do |f| %>
   <% if @minor_region.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@minor_region.errors.count, "error") %> prohibited this minor_region from being saved:</h2>
-
+    <div class="alert alert-danger" id="error_explanation">
       <ul>
       <% @minor_region.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -17,13 +15,13 @@
 
     <br></br>
 
-    <%= f.label :Description %>
+    <%= f.label :Descripcion %>
     <%= f.text_area :description, autofocus: true, class:'form-control input-medium', rows:3 %>
   </div>
   <br></br>
 
   <div class="actions">
-    <%= f.submit "Submit", class:'btn btn-primary'%>
+    <%= f.submit "Aceptar", class:'btn btn-primary'%>
   </div>
 <% end %>
 

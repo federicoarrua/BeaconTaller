@@ -1,14 +1,14 @@
 <div class="col-md-8 col-sm-8">
-	<h2>Showing Major region <%= @major_region.major_id %></h2>
+	<h2>Major region <%= @major_region.major_id %></h2>
 	<p id="notice"><%= notice %></p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3>Description</h3>
+			<h3>Descripción</h3>
 		</div>
 		<div class="panel-body">
 			<p><%= @major_region.description %></p>
 		</div>
 	</div>
-	<%= link_to 'Edit', edit_major_region_path(@major_region) ,class:'btn btn-primary'%> |
-	<%= link_to 'Back', major_regions_path , class:'btn btn-warning'%>
+	<%= link_to 'Editar', edit_major_region_path(@major_region) ,class:'btn btn-primary'%> |
+	<%= link_to 'Atrás', major_regions_path , class:'btn btn-warning'%>
 </div>

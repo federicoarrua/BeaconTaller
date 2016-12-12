@@ -1,12 +1,55 @@
-<div class="col-md-8 col-sm-8">
-	<h2>Reports</h2>
-	<p>Reports are useful to bla bla bla..</p>
+<script> //Script para el datepicker
+    $(document).ready(function(){
+        var date_input=$('.datepicker'); 
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'dd/mm/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+            endDate: new Date,
+            language:"es",
+        })
+	})
+</script>
+<div class="col-md-9 col-sm-9">
+	<h2>Reportes</h2>
+	<p>Los reportes permiten saber información acerca de la aplicación móvil.</p>
+	<p>Estos reportes están en formato .xlsx para visualizarlos con una herramienta de tipo excel. Además la información queda guardada en la base de datos.</p>
 	<div class="col-md-6 col-sm-6">
-		<h4>Generate Devices report</h4>
-		<%= link_to 'Report Devices .xlsx', devices_path(format: :xlsx), class:'btn btn-primary' %>
+		<br></br>
+		<h4>Generar reporte de Dispositivos</h4>
+		<p>Los reportes de dispositivos nos muestran los celulares que tienen la aplicación activa y la han utilizado al menos una vez.</p>
+		<p>Rango de fechas:</p>
+		<p style="color:red"><%= flash[:date_device] %></p>
+		<%= form_for :index,url: url_for( :controller => :devices, :action => :index ,:format => :xlsx), :method=>"get" do |f| %>
+			<div class="col-md-5">
+				<%= f.text_field :start_date, class:'form-control datepicker', required:true, placeholder: "Fecha inicial"%>
+			</div>
+			<div class="col-md-1"><p> y </p></div>
+			<div class="col-md-5">
+				<%= f.text_field :end_date, class:'form-control datepicker', required: true, placeholder: "Fecha final"%>
+			</div>
+			<br></br>
+			<%= f.submit 'Reporte Devices .xlsx', class:'btn btn-primary' %>
+		<% end %>
 	</div>
 	<div class="col-md-6 col-sm-6">
-		<h4>Generate Discovers report</h4>
-		<%= link_to 'Report Discovers .xlsx', discovers_path(format: :xlsx),class:'btn btn-primary' %>
+		<br></br>
+		<h4>Generar reporte de Descubrimientos</h4>
+		<p>Los reportes de descubrimientos indican a que hora y que dia paso cerca de un beacon determinado un usuario.</p>
+		<p>Rango de fechas:</p>
+		<p style="color:red"><%= flash[:date_discover] %></p>
+		<%= form_for :index,url: url_for( :controller => :discovers, :action => :index ,:format => :xlsx), :method=>"get" do |fd| %>
+			<div class="col-md-5">
+				<%= fd.text_field :start_date, class:'form-control datepicker', required: true, placeholder: "Fecha inicial"%>
+			</div>
+			<div class="col-md-1"><p> y </p></div>
+			<div class="col-md-5">
+				<%= fd.text_field :end_date, class:'form-control datepicker', required: true, placeholder: "Fecha inicial"%>
+			</div>
+			<br></br>
+			<%= fd.submit 'Reporte Discovers .xlsx', class:'btn btn-primary' %>
+		<% end %>
 	</div>
 </div>

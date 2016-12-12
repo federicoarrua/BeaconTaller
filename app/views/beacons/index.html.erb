@@ -1,7 +1,6 @@
 <div class="col-md-8 col-sm-8">
-  <p id="notice"><%= notice %></p>
 
-  <h1>Listing Beacons</h1>
+  <h1>Lista de Beacons</h1>
 
   <table id="datatable" class="table datatable table-condensed">
     <thead>
@@ -21,9 +20,9 @@
           <td><%= beacon.id%></td>
           <td><%= beacon.major_id %></td>
           <td><%= beacon.minor_id %></td>
-          <td><%= link_to 'Show', beacon ,class:'btn btn-default'%></td>
-          <td><%= link_to 'Edit', edit_beacon_path(beacon), class:'btn btn-primary'%></td>
-          <td><%= link_to 'Destroy', beacon, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
+          <td><%= link_to 'Ver', beacon ,class:'btn btn-default'%></td>
+          <td><%= link_to 'Editar', edit_beacon_path(beacon), class:'btn btn-primary'%></td>
+          <td><%= link_to 'Eliminar', beacon, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
         </tr>
       <% end %>
     </tbody>

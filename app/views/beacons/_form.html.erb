@@ -1,11 +1,13 @@
 <%= form_for(@beacon) do |f| %>
   <% if @beacon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@beacon.errors.count, "error") %> prohibited this beacon from being saved:</h2>
-
+    <div class="alert alert-danger" id="error_explanation">
       <ul>
-      <% @beacon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @beacon.errors.each do |attribute,message| %>
+        <% if attribute.to_s == 'major_region' %>
+          <li>Combinación de major y minor ya existente</li>
+        <% else %>
+          <li>La descripción <%= message %></li>
+        <% end %>
       <% end %>
       </ul>
     </div>
@@ -21,9 +23,9 @@
 
     <br></br>
 
-    <%= f.label :Description %>
+    <%= f.label :Descripcion %>
     <%= f.text_area :description, autofocus: true, class:'form-control input-medium', rows:3 %>
 
-    <%= f.submit "Submit", class:'btn btn-primary'%>
+    <%= f.submit "Aceptar", class:'btn btn-primary'%>
   </div>
 <% end %>
