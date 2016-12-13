@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <td>ID</td>
+        <td>Nombre</td>
         <td>Major Region</td>
         <td>Minor Region</td>
         <td></td>
@@ -17,7 +18,8 @@
     <tbody>
       <% @beacons.each do |beacon| %>
         <tr>
-          <td><%= beacon.id%></td>
+          <td><%= beacon.id %></td>
+          <td><%= beacon.name %></td>
           <td><%= beacon.major_id %></td>
           <td><%= beacon.minor_id %></td>
           <td><%= link_to 'Ver', beacon ,class:'btn btn-default'%></td>

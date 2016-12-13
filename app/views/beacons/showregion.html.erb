@@ -2,21 +2,21 @@
 	<p id="notice"><%= notice %></p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h2>Showing beacon <%= @beacon.id%></h2>
+			<h2>Beacon "<%= @beacon.name%>"</h2>
 		</div>
 		<div class="panel-body">
-			<h4>Beacon Description</h4>
+			<h4>Descripción</h4>
 			<p><%= @beacon.description %></p>
 			<div class="col-md-6">
-				<h5>Major Region <%= @beacon.major_id %> description</h5>
+				<h5>Descripción de  Major Region <%= @beacon.major_id %></h5>
 				<p><%= MajorRegion.find(@beacon.major_id).description %></p>
 			</div>
 			<div class="col-md-6">
-				<h5>Minor Region <%= @beacon.minor_id %> description</h5>
+				<h5>Descripción de Minor Region <%= @beacon.minor_id %></h5>
 				<p><%= MinorRegion.find(@beacon.minor_id).description %></p>
 			</div>
 		</div>
 	</div>
-	<%= link_to 'Edit', edit_beacon_path(@beacon) , class:'btn btn-primary'%> |
-	<%= link_to 'Back', beacons_path , class:'btn btn-warning'%>
+	<%= link_to 'Editar', edit_beacon_path(@beacon) , class:'btn btn-primary'%> |
+	<%= link_to 'Atrás', beacons_path , class:'btn btn-warning'%>
 </div>
