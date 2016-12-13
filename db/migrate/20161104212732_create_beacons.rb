@@ -1,6 +1,7 @@
 class CreateBeacons < ActiveRecord::Migration
   def change
     create_table :beacons do |t|
+      t.string :name , :null => false
       t.integer :major_id , :null => false
       t.integer :minor_id , :null => false
       t.integer :user_id #, :null => false

@@ -15,17 +15,24 @@
 
   <div class="panel-body">
 
-    <%= f.label :major_id %>
-    <%= f.collection_select :major_id, MajorRegion.all, :major_id, :major_id%>
+    <div class="col-md-5">
+      <%= f.label :nombre %>
+      <%= f.text_field :name, autofocus: true, class:'form-control input-medium'%>
+    </div>
+    <div class="col-md-7">
+      <br></br>
+      <%= f.label :major_id %>
+      <%= f.collection_select :major_id, MajorRegion.all, :major_id, :major_id%>
 
-    <%= f.label :minor_id %>
-    <%= f.collection_select :minor_id, MinorRegion.all, :minor_id, :minor_id%>
-
-    <br></br>
-
-    <%= f.label :Descripcion %>
-    <%= f.text_area :description, autofocus: true, class:'form-control input-medium', rows:3 %>
-
-    <%= f.submit "Aceptar", class:'btn btn-primary'%>
+      <%= f.label :minor_id %>
+      <%= f.collection_select :minor_id, MinorRegion.all, :minor_id, :minor_id%>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :Descripcion %>
+      <%= f.text_area :description, class:'form-control input-medium', rows:3 %>
+      <br></br>
+      <%= f.submit "Aceptar", class:'btn btn-primary'%>
+    </div>
+    
   </div>
 <% end %>

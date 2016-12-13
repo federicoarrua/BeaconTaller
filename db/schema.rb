@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20161203192058) do
   enable_extension "plpgsql"
 
   create_table "beacons", force: :cascade do |t|
+    t.string   "name",        null: false
     t.integer  "major_id",    null: false
     t.integer  "minor_id",    null: false
     t.integer  "user_id"

@@ -8,6 +8,8 @@ class Beacon < ActiveRecord::Base
   	presence: true,
   	length: {minimum: 10 ,maximum:256}
 
+  validates :name, presence: true, uniqueness: true
+
   validates :major_region, presence: true, uniqueness: { scope: [:minor_id] }
   validates :minor_region, presence: true
 end

@@ -1,1 +1,1 @@
-json.extract! beacon, :id,:major_id,:minor_id,:description
+json.extract! beacon, :id,:name,:major_id,:minor_id,:description
