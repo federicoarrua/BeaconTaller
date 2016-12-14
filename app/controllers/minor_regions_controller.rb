@@ -20,12 +20,16 @@ class MinorRegionsController < ApplicationController
 
   # GET /minor_regions/1/edit
   def edit
+    if @minor_region.user_id != current_user.id
+      redirect_to(root_path)
+    end 
   end
 
   # POST /minor_regions
   # POST /minor_regions.json
   def create
     @minor_region = MinorRegion.new(minor_region_params)
+    @minor_region = current_user.id
 
     respond_to do |format|
       if @minor_region.save
@@ -41,13 +45,17 @@ class MinorRegionsController < ApplicationController
   # PATCH/PUT /minor_regions/1
   # PATCH/PUT /minor_regions/1.json
   def update
-    respond_to do |format|
-      if @minor_region.update(minor_region_params)
-        format.html { redirect_to @minor_region, notice: 'Minor region was successfully updated.' }
-        format.json { render :show, status: :ok, location: @minor_region }
-      else
-        format.html { render :edit }
-        format.json { render json: @minor_region.errors, status: :unprocessable_entity }
+    if @minor_region.user_id != current_user.id
+      redirect_to(root_path)
+    else 
+      respond_to do |format|
+        if @minor_region.update(minor_region_params)
+          format.html { redirect_to @minor_region, notice: 'Minor region was successfully updated.' }
+          format.json { render :show, status: :ok, location: @minor_region }
+        else
+          format.html { render :edit }
+          format.json { render json: @minor_region.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -55,10 +63,14 @@ class MinorRegionsController < ApplicationController
   # DELETE /minor_regions/1
   # DELETE /minor_regions/1.json
   def destroy
-    @minor_region.destroy
-    respond_to do |format|
-      format.html { redirect_to minor_regions_url, notice: 'Minor region was successfully destroyed.' }
-      format.json { head :no_content }
+    if @minor_region.user_id != current_user.id
+      redirect_to(root_path)
+    else 
+      @minor_region.destroy
+      respond_to do |format|
+        format.html { redirect_to minor_regions_url, notice: 'Minor region was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

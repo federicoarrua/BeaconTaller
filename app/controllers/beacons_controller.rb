@@ -16,7 +16,7 @@ class BeaconsController < ApplicationController
   #GET /beacons/showregion
   #GET /beacons/showregion.json
   def showregion
-      @beacon = Beacon.where(major_id:params[:major_id],minor_id:params[:minor_id]).first
+      @beacon = Beacon.where(major_region_id:params[:major_region_id],minor_region_id:params[:minor_region_id]).first
   end
 
   # GET /beacons/new
@@ -26,12 +26,16 @@ class BeaconsController < ApplicationController
 
   # GET /beacons/1/edit
   def edit
+    if @beacon.user_id != current_user.id
+      redirect_to(root_path)
+    end        
   end
 
   # POST /beacons
   # POST /beacons.json
   def create
     @beacon = Beacon.new(beacon_params)
+    @beacon.user_id = current_user.id
 
     respond_to do |format|
       if @beacon.save
@@ -47,13 +51,17 @@ class BeaconsController < ApplicationController
   # PATCH/PUT /beacons/1
   # PATCH/PUT /beacons/1.json
   def update
-    respond_to do |format|
-      if @beacon.update(beacon_params)
-        format.html { redirect_to @beacon, notice: 'Beacon was successfully updated.' }
-        format.json { render :show, status: :ok, location: @beacon }
-      else
-        format.html { render :edit }
-        format.json { render json: @beacon.errors, status: :unprocessable_entity }
+    if @beacon.user_id != current_user.id
+      redirect_to(root_path)
+    else 
+      respond_to do |format|
+        if @beacon.update(beacon_params)
+          format.html { redirect_to @beacon, notice: 'Beacon was successfully updated.' }
+          format.json { render :show, status: :ok, location: @beacon }
+        else
+          format.html { render :edit }
+          format.json { render json: @beacon.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -61,10 +69,14 @@ class BeaconsController < ApplicationController
   # DELETE /beacons/1
   # DELETE /beacons/1.json
   def destroy
-    @beacon.destroy
-    respond_to do |format|
-      format.html { redirect_to beacons_url, notice: 'Beacon was successfully destroyed.' }
-      format.json { head :no_content }
+    if @beacon.user_id != current_user.id
+      redirect_to(root_path)
+    else 
+      @beacon.destroy
+      respond_to do |format|
+        format.html { redirect_to beacons_url, notice: 'Beacon was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

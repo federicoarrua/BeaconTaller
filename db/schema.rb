@@ -17,18 +17,18 @@ ActiveRecord::Schema.define(version: 20161203192058) do
   enable_extension "plpgsql"
 
   create_table "beacons", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "major_id",    null: false
-    t.integer  "minor_id",    null: false
-    t.integer  "user_id"
+    t.string   "name",            null: false
+    t.integer  "major_region_id", null: false
+    t.integer  "minor_region_id", null: false
+    t.integer  "user_id",         null: false
     t.text     "description"
     t.float    "lat"
     t.float    "lng"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "beacons", ["major_id", "minor_id"], name: "index_beacons_on_major_id_and_minor_id", unique: true, using: :btree
+  add_index "beacons", ["major_region_id", "minor_region_id"], name: "index_beacons_on_major_region_id_and_minor_region_id", unique: true, using: :btree
 
   create_table "devices", id: false, force: :cascade do |t|
     t.string   "device_id",  null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20161203192058) do
 
   create_table "major_regions", id: false, force: :cascade do |t|
     t.integer  "major_id",    null: false
+    t.integer  "user_id",     null: false
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20161203192058) do
 
   create_table "minor_regions", id: false, force: :cascade do |t|
     t.integer  "minor_id",    null: false
+    t.integer  "user_id",     null: false
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

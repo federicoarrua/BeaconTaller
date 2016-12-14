@@ -6,16 +6,20 @@
 		<div class="panel-body">
 			<h4>Descripción</h4>
 			<p><%= @beacon.description %></p>
+			<h4>Dueño: <%= User.find(@beacon.user_id).email %></h4>
 			<div class="col-md-6">
-				<h5>Major Region <%= @beacon.major_id %> descripción</h5>
-				<p><%= MajorRegion.find(@beacon.major_id).description %></p>
+				<h5>Major Region <%= @beacon.major_region_id %> descripción</h5>
+				<p><%= MajorRegion.find(@beacon.major_region_id).description %></p>
 			</div>
 			<div class="col-md-6">
-				<h5>Minor Region <%= @beacon.minor_id %> descripción</h5>
-				<p><%= MinorRegion.find(@beacon.minor_id).description %></p>
+				<h5>Minor Region <%= @beacon.minor_region_id %> descripción</h5>
+				<p><%= MinorRegion.find(@beacon.minor_region_id).description %></p>
 			</div>
 		</div>
 	</div>
-	<%= link_to 'Editar', edit_beacon_path(@beacon) , class:'btn btn-primary'%> |
+	<% if current_user.id == @beacon.user_id %>
+		<%= link_to 'Eliminar', @beacon, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %>
+		<%= link_to 'Editar', edit_beacon_path(@beacon) , class:'btn btn-primary'%>|
+	<% end %> 
 	<%= link_to 'Atrás', beacons_path , class:'btn btn-warning'%>
 </div>

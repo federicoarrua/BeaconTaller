@@ -22,10 +22,10 @@
     <div class="col-md-7">
       <br></br>
       <%= f.label :major_id %>
-      <%= f.collection_select :major_id, MajorRegion.all, :major_id, :major_id%>
+      <%= f.collection_select :major_region_id, MajorRegion.all, :major_id, :major_id%>
 
       <%= f.label :minor_id %>
-      <%= f.collection_select :minor_id, MinorRegion.all, :minor_id, :minor_id%>
+      <%= f.collection_select :minor_region_id, MinorRegion.all, :minor_id, :minor_id%>
     </div>
     <div class="col-md-12">
       <%= f.label :Descripcion %>

@@ -1,5 +1,4 @@
 <div class="col-md-8 col-sm-8">
-  <p id="notice"><%= notice %></p>
 
   <h1>Lista de Major Regions</h1>
 
@@ -7,6 +6,7 @@
     <thead>
       <tr>
         <td>Major_id</td>
+        <td>Dueño</td>
         <td></td>
         <td></td>
         <td></td>
@@ -16,9 +16,15 @@
       <% @major_regions.each do |major_region| %>
         <tr>
           <td><%= major_region.major_id%></td>
+          <td><%= User.find(major_region.user_id).email %></td>
           <td><%= link_to 'Ver', major_region ,class:'btn btn-default'%></td>
-          <td><%= link_to 'Editar', edit_major_region_path(major_region), class:'btn btn-primary'%></td>
-          <td><%= link_to 'Eliminar', major_region, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
+          <% if current_user.id == major_region.user_id %>
+            <td><%= link_to 'Editar', edit_major_region_path(major_region), class:'btn btn-primary'%></td>
+            <td><%= link_to 'Eliminar', major_region, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <td>ID</td>
+        <td>Dueño</td>
         <td>Nombre</td>
         <td>Major Region</td>
         <td>Minor Region</td>
@@ -19,12 +20,18 @@
       <% @beacons.each do |beacon| %>
         <tr>
           <td><%= beacon.id %></td>
+          <td><%= User.find(beacon.user_id).email %></td>
           <td><%= beacon.name %></td>
-          <td><%= beacon.major_id %></td>
-          <td><%= beacon.minor_id %></td>
+          <td><%= beacon.major_region_id %></td>
+          <td><%= beacon.minor_region_id %></td>
           <td><%= link_to 'Ver', beacon ,class:'btn btn-default'%></td>
-          <td><%= link_to 'Editar', edit_beacon_path(beacon), class:'btn btn-primary'%></td>
-          <td><%= link_to 'Eliminar', beacon, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
+          <% if current_user.id == beacon.user_id %>
+            <td><%= link_to 'Editar', edit_beacon_path(beacon), class:'btn btn-primary'%></td>
+            <td><%= link_to 'Eliminar', beacon, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

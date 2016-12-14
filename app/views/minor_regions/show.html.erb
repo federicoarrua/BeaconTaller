@@ -1,14 +1,17 @@
 <div class="col-md-8 col-sm-8">
 	<h2>Minor region <%= @minor_region.minor_id %></h2>
-	<p id="notice"><%= notice %></p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3>Descripción</h3>
 		</div>
 		<div class="panel-body">
 			<p><%= @minor_region.description %></p>
+			<h4>Dueño: <%= User.find(@minor_region.user_id).email %></h4>
 		</div>
 	</div>
-	<%= link_to 'Editar', edit_minor_region_path(@minor_region) ,class:'btn btn-primary'%> |
+	<% if current_user.id == @minor_region.user_id %>
+		<%= link_to 'Eliminar', @minor_region, method: :delete, data: { confirm: 'Está seguro?' },class:'btn btn-danger' %>
+		<%= link_to 'Editar', edit_minor_region_path(@minor_region) ,class:'btn btn-primary'%> |
+	<% end %>
 	<%= link_to 'Atrás', minor_regions_path , class:'btn btn-warning'%>
 </div>

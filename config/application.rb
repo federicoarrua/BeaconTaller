@@ -23,7 +23,7 @@ module BeaconTaller
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.default_locale = :es
-    config.serve_static_assets =true    
+    config.serve_static_files =true    
     config.time_zone = 'Brasilia'
     config.active_record.default_timezone = :local 
   end

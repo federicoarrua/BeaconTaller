@@ -19,12 +19,16 @@ class MajorRegionsController < ApplicationController
 
   # GET /major_regions/1/edit
   def edit
+    if @major_region.user_id != current_user.id
+      redirect_to(root_path)
+    end 
   end
 
   # POST /major_regions
   # POST /major_regions.json
   def create
     @major_region = MajorRegion.new(major_region_params)
+    @major_region = current_user.id
 
     respond_to do |format|
       if @major_region.save
@@ -40,13 +44,17 @@ class MajorRegionsController < ApplicationController
   # PATCH/PUT /major_regions/1
   # PATCH/PUT /major_regions/1.json
   def update
-    respond_to do |format|
-      if @major_region.update(major_region_params)
-        format.html { redirect_to @major_region, notice: 'Major region was successfully updated.' }
-        format.json { render :show, status: :ok, location: @major_region }
-      else
-        format.html { render :edit }
-        format.json { render json: @major_region.errors, status: :unprocessable_entity }
+    if @major_region.user_id != current_user.id
+      redirect_to(root_path)
+    else 
+      respond_to do |format|
+        if @major_region.update(major_region_params)
+          format.html { redirect_to @major_region, notice: 'Major region was successfully updated.' }
+          format.json { render :show, status: :ok, location: @major_region }
+        else
+          format.html { render :edit }
+          format.json { render json: @major_region.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -54,10 +62,14 @@ class MajorRegionsController < ApplicationController
   # DELETE /major_regions/1
   # DELETE /major_regions/1.json
   def destroy
-    @major_region.destroy
-    respond_to do |format|
-      format.html { redirect_to major_regions_url, notice: 'Major region was successfully destroyed.' }
-      format.json { head :no_content }
+    if @major_region.user_id != current_user.id
+      redirect_to(root_path)
+    else 
+      @major_region.destroy
+      respond_to do |format|
+        format.html { redirect_to major_regions_url, notice: 'Major region was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
