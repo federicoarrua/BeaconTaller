@@ -13,8 +13,8 @@ class BeaconsController < ApplicationController
   def show
   end
 
-  #GET /beacons/showregion
-  #GET /beacons/showregion.json
+  #GET /beacons/showregion?major_region_id=&minor_region_id=
+  #GET /beacons/showregion?major_region_id=&minor_region_id=.json
   def showregion
       @beacon = Beacon.where(major_region_id:params[:major_region_id],minor_region_id:params[:minor_region_id]).first
   end
@@ -91,6 +91,7 @@ class BeaconsController < ApplicationController
       params.require(:beacon).permit(:name,:major_id,:minor_id,:description)
     end
 
+    #Filtro de logueo, si no esta logueado redirige a pagina inicial
     def verify_user 
       (current_user.nil?) ? redirect_to(root_path) : (redirect_to(root_path) unless user_signed_in?)
     end
