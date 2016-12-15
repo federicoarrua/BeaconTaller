@@ -1,14 +1,17 @@
 source 'https://rubygems.org'
 
-#Manejo de usuarios
+gem 'will_paginate', '~> 3.0'
+
+gem 'paperclip'
+
+gem 'validates_timeliness', '~> 3.0'
+
 gem 'devise'
 
 gem 'hirb'
 
-#Datepicker para bootstrap
 gem 'bootstrap-datepicker-rails'
 
-#Generación de reportes en excel
 gem 'axlsx_rails'
 
 gem 'rsense'
@@ -16,12 +19,9 @@ gem 'rsense'
 #Bootstrap gems
 gem 'bootstrap-sass', '~> 3.3.6'
 
-#jQuery
 gem 'jquery-datatables-rails', '~> 3.4.0'
 
-#Claves primarias compuestas
 gem 'composite_primary_keys'
-
 
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 

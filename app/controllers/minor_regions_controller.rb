@@ -29,7 +29,7 @@ class MinorRegionsController < ApplicationController
   # POST /minor_regions.json
   def create
     @minor_region = MinorRegion.new(minor_region_params)
-    @minor_region = current_user.id
+    @minor_region.user_id = current_user.id
 
     respond_to do |format|
       if @minor_region.save

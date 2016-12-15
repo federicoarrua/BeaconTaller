@@ -28,7 +28,7 @@ class MajorRegionsController < ApplicationController
   # POST /major_regions.json
   def create
     @major_region = MajorRegion.new(major_region_params)
-    @major_region = current_user.id
+    @major_region.user_id = current_user.id
 
     respond_to do |format|
       if @major_region.save
