@@ -88,7 +88,7 @@ class BeaconsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def beacon_params
-      params.require(:beacon).permit(:name,:major_id,:minor_id,:description)
+      params.require(:beacon).permit(:name,:major_region_id,:minor_region_id,:description)
     end
 
     #Filtro de logueo, si no esta logueado redirige a pagina inicial
